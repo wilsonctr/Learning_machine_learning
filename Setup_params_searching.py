@@ -114,3 +114,24 @@ data = data.join(temp_df)
 counter = []
 for i in data.Sequence:
     counter.append(Counter(i.replace(' ','')))
+
+charges = []
+aa_count = []
+aa_columns = ['A','C', 'D', 'E', 'F',
+       'G', 'I', 'K', 'L',
+       'M', 'N', 'P', 'Q',
+       'R', 'S', 'T', 'V', 'W', 'Y']
+
+aa_count_df = pd.DataFrame(columns=aa_columns)
+for i in numerical_df.Sequence:
+    temp_df = pd.DataFrame()
+    temp_list = []
+    for a in aa_columns:
+        if a in Counter(i):
+            temp_list.append(Counter(i)[a])
+        else:
+            temp_list.append(0)
+
+    temp_df = pd.DataFrame([temp_list], columns=aa_columns)
+    
+    aa_count_df = aa_count_df.append(temp_df)
