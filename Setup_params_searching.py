@@ -57,7 +57,7 @@ param_grid = {'n_estimators': n_estimators,
              "min_samples_leaf" : [1,2,3,4,5,6],
              "max_features" : ["auto", "log2"],
              }
-grid_search = GridSearchCV(RF, param_grid, cv=5)
+grid_search = RandomizedSearchCV(RF, param_grid, cv=5)
 grid_search.fit(X, y)
 grid_search.best_params_
 print grid_search.best_params_ , grid_search.best_score_
